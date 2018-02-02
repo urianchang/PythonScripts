@@ -1,14 +1,27 @@
 import sys
+import simplejson
 import yaml
 import ruamel.yaml as y
 from pprint import pprint
 
-with open('<YAML_FILE>', 'rb') as f:
+conf = raw_input().strip()
+
+with open(conf, 'rb') as f:
+    # config = yaml.safe_load(f)
     config = y.load(f, Loader=y.RoundTripLoader)
+print type(config)
+# x = y.dump(config, Dumper=y.RoundTripDumper, allow_unicode=True, default_flow_style=False, indent=2)
+d = simplejson.loads(simplejson.dumps(config))
+print type(d)
+print d
 
-x = y.dump(config, Dumper=y.RoundTripDumper, allow_unicode=True, default_flow_style=False, indent=2)
-
-print type(x)
+# print yaml.load("""
+# test:
+# - tester_name: asdf
+#   type: local
+#   completed: true
+#   errors: 1
+# """)
 
 """ From: https://github.com/fmenabe/python-yamlordereddictloader
 # LOADERS
