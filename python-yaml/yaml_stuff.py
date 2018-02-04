@@ -3,17 +3,25 @@ import simplejson
 import yaml
 import ruamel.yaml as y
 from pprint import pprint
+import yamlordereddictloader
 
 conf = raw_input().strip()
 
 with open(conf, 'rb') as f:
-    # config = yaml.safe_load(f)
-    config = y.load(f, Loader=y.RoundTripLoader)
-print type(config)
-# x = y.dump(config, Dumper=y.RoundTripDumper, allow_unicode=True, default_flow_style=False, indent=2)
-d = simplejson.loads(simplejson.dumps(config))
-print type(d)
+    config = yaml.load(f, Loader=yamlordereddictloader.Loader)
+
+# print config
+d = yaml.dump(config, Dumper=yamlordereddictloader.Dumper, default_flow_style=False)
 print d
+
+# with open(conf, 'rb') as f:
+#     # config = yaml.safe_load(f)
+#     config = y.load(f, Loader=y.RoundTripLoader)
+# print type(config)
+# # x = y.dump(config, Dumper=y.RoundTripDumper, allow_unicode=True, default_flow_style=False, indent=2)
+# d = simplejson.loads(simplejson.dumps(config))
+# print type(d)
+# print d
 
 # print yaml.load("""
 # test:
