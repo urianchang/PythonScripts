@@ -3,6 +3,7 @@ Given a timezone and relative time into the past, calculate and return the
 start time.
 """
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 
 import pytz
 
@@ -14,17 +15,19 @@ req_unit = raw_input("Relative unit: ").strip().lower()
 
 if req_tz in pytz.all_timezones:
     if req_unit in ALLOWED_UNITS:
-        if req_unit == "day":
-            time_diff = timedelta(days=req_amt)
-        elif req_unit == "week":
-            time_diff = timedelta(weeks=req_amt)
-        elif req_unit == "month":
-            time_diff = timedelta(weeks=(4*req_amt))
-        else:
-            time_diff = timedelta(weeks=(52*req_amt))
         relative_now = datetime.now(pytz.timezone(req_tz))
         print relative_now
-        print relative_now - time_diff
+
+        if req_unit == "day":
+            relative_before = relative_now - timedelta(days=req_amt)
+        elif req_unit == "week":
+            relative_before = relative_now - timedelta(weeks=req_amt)
+        elif req_unit == "month":
+            relative_before = relative_now - relativedelta(months=req_amt)
+        else:
+            relative_before = relative_now - relativedelta(months=(12*req_amt))
+
+        print relative_before
     else:
         print "Unsupported time unit"
 else:
