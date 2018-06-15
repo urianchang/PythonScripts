@@ -1,6 +1,7 @@
 """
 Given a timezone and relative time into the past, calculate and return the
-start time.
+start time. For example, if today is May 29, 1988, then 2 days ago will be
+May 27, 1988.
 """
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
