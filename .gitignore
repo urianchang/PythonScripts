@@ -1,3 +1,12 @@
+# Python
 *.pyc
+__pycache__/
+
+# OS
 .DS_Store
+
+# Credentials
 config.json
+
+# IDEA
+.idea/
