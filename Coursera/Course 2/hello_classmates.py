@@ -1,1 +1,0 @@
-print "Hello! I can't wait to continue learning Python with all of you."

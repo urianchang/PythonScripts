@@ -1,7 +1,0 @@
-# To prevent empty line of input...
-
-# Method 1
-    if line.startswith("#") : 
-    
-# Method 2
-    if len(line) > 0 and line[0] == "#" :
