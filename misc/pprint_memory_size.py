@@ -1,9 +1,11 @@
-def sizeof_fmt(num, suffix="B"):
+def sizeof_fmt(num: int, suffix: str = "B") -> str:
+    floaty = float(num)
     for unit in ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"]:
-        if abs(num) < 1024.0:
+        if abs(floaty) < 1024.0:
             return "%3.1f%s%s" % (num, unit, suffix)
-        num /= 1024.0
-    return "%.1f%s%s" % (num, "Yi", suffix)
+        floaty /= 1024.0
+    return "%.1f%s%s" % (floaty, "Yi", suffix)
 
 
-# print(sizeof_fmt(168963795964))
+if __name__ == "__main__":
+    assert sizeof_fmt(168963795964) == "157.4GiB"
