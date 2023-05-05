@@ -6,7 +6,7 @@ authors = ["Urian Chang <urianchang@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 fastapi = {extras = ["all"], version = "^0.95.1"}
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
 
