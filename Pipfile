@@ -35,6 +35,8 @@ websockets = "==11.0.2"
 tensorflow = "*"
 
 [dev-packages]
+black = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.9"
